@@ -1,6 +1,4 @@
 // miniprogram/utils/request.js
-const app = getApp()
-
 // 后端API基础地址 - 根据您的实际情况修改
 const BASE_URL = 'http://localhost:3000/api' 
 
