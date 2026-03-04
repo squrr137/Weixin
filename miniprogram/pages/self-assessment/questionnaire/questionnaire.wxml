@@ -1,0 +1,37 @@
+<!-- pages/self-assessment/questionnaire/questionnaire.wxml -->
+<view class="questionnaire-container">
+  <view class="progress-section">
+    <view class="progress-bar">
+      <view class="progress-fill" style="width: {{progress}}"></view>
+    </view>
+    <text class="progress-text">{{currentIndex + 1}}/{{totalQuestions}}</text>
+  </view>
+
+  <view class="question-card">
+    <view class="question-header">
+      <text class="question-number">第{{currentIndex + 1}}题</text>
+      <text class="question-text">{{currentQuestion.question}}</text>
+    </view>
+
+    <view class="options-list">
+      <view class="option-item" wx:for="{{currentQuestion.options}}" wx:key="index"
+            bindtap="selectOption" data-index="{{index}}">
+        <view class="option-content">
+          <text class="option-text">{{item}}</text>
+        </view>
+        <view class="option-checkbox {{selectedIndex === index ? 'checked' : ''}}">
+          <text wx:if="{{selectedIndex === index}}">✓</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="navigation-buttons">
+    <button class="btn-secondary" bindtap="prevQuestion" 
+            disabled="{{currentIndex === 0}}">上一题</button>
+    <button class="btn-primary" bindtap="nextQuestion" 
+            disabled="{{selectedIndex === null}}">
+      {{currentIndex === totalQuestions - 1 ? '完成' : '下一题'}}
+    </button>
+  </view>
+</view>

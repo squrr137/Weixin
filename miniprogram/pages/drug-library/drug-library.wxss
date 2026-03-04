@@ -1,0 +1,146 @@
+/* pages/drug-library/drug-library.wxss */
+.container {
+    padding: 0 30rpx;
+  }
+  
+  .search-bar {
+    padding: 20rpx 0;
+    background-color: #F5F7FA;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  
+  .search-box {
+    display: flex;
+    align-items: center;
+    background-color: #FFFFFF;
+    border-radius: 40rpx;
+    padding: 16rpx 30rpx;
+    border: 2rpx solid #EEEEEE;
+  }
+  
+  .search-icon {
+    width: 32rpx;
+    height: 32rpx;
+    margin-right: 16rpx;
+  }
+  
+  .search-input {
+    flex: 1;
+    font-size: 28rpx;
+  }
+  
+  .category-tabs {
+    margin: 20rpx 0;
+    background-color: #F5F7FA;
+    position: sticky;
+    top: 100rpx;
+    z-index: 99;
+  }
+  
+  .tab-scroll {
+    white-space: nowrap;
+    padding: 10rpx 0;
+  }
+  
+  .tab-list {
+    display: inline-flex;
+  }
+  
+  .tab-item {
+    display: inline-block;
+    padding: 16rpx 32rpx;
+    margin-right: 20rpx;
+    background-color: #FFFFFF;
+    border-radius: 40rpx;
+    font-size: 28rpx;
+    color: #666666;
+  }
+  
+  .tab-item.active {
+    background-color: #4A90E2;
+    color: #FFFFFF;
+  }
+  
+  .content-list {
+    margin-top: 20rpx;
+  }
+  
+  .content-item {
+    display: flex;
+    background-color: #FFFFFF;
+    border-radius: 16rpx;
+    padding: 24rpx;
+    margin-bottom: 20rpx;
+    box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+  }
+  
+  .content-cover {
+    width: 160rpx;
+    height: 160rpx;
+    border-radius: 12rpx;
+    margin-right: 24rpx;
+    background-color: #F5F5F5;
+  }
+  
+  .content-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .content-title {
+    font-size: 32rpx;
+    font-weight: 500;
+    color: #333333;
+    margin-bottom: 8rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+  
+  .content-category {
+    font-size: 24rpx;
+    color: #4A90E2;
+    background-color: #E8F0FE;
+    padding: 4rpx 12rpx;
+    border-radius: 20rpx;
+    align-self: flex-start;
+    margin-bottom: 8rpx;
+  }
+  
+  .content-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto;
+  }
+  
+  .read-count {
+    font-size: 24rpx;
+    color: #999999;
+  }
+  
+  .create-time {
+    font-size: 24rpx;
+    color: #999999;
+  }
+  
+  .empty-state {
+    text-align: center;
+    padding: 100rpx 0;
+  }
+  
+  .empty-icon {
+    width: 160rpx;
+    height: 160rpx;
+    margin-bottom: 30rpx;
+    opacity: 0.5;
+  }
+  
+  .empty-text {
+    font-size: 28rpx;
+    color: #999999;
+  }

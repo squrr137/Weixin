@@ -1,0 +1,149 @@
+<!-- pages/info-collect/info-collect.wxml -->
+<view class="collect-container">
+  <view class="progress-bar">
+    <view class="progress-fill" style="width: 25%"></view>
+  </view>
+  <text class="progress-text">基本信息收集 (1/4)</text>
+
+  <scroll-view class="form-scroll" scroll-y>
+    <view class="card">
+      <text class="section-title">基本信息</text>
+      
+      <view class="input-group">
+        <text class="input-label">昵称 <text class="required">*</text></text>
+        <input class="input-field" placeholder="请输入您的昵称" 
+               bindinput="onNicknameInput" maxlength="20" />
+      </view>
+
+      <view class="input-group">
+        <text class="input-label">年龄 <text class="required">*</text></text>
+        <picker mode="selector" range="{{ageRange}}" bindchange="onAgeChange">
+          <view class="picker-field">
+            {{age || '请选择年龄'}}
+          </view>
+        </picker>
+      </view>
+
+      <view class="input-group">
+        <text class="input-label">性别 <text class="required">*</text></text>
+        <radio-group class="gender-group" bindchange="onGenderChange">
+          <label class="radio-label">
+            <radio value="male" color="#4A90E2" /> 男
+          </label>
+          <label class="radio-label">
+            <radio value="female" color="#4A90E2" /> 女
+          </label>
+        </radio-group>
+      </view>
+
+      <view class="input-group">
+        <text class="input-label">文化程度</text>
+        <picker mode="selector" range="{{educationLevels}}" bindchange="onEducationChange">
+          <view class="picker-field">
+            {{education || '请选择文化程度'}}
+          </view>
+        </picker>
+      </view>
+    </view>
+
+    <view class="card">
+      <text class="section-title">疾病信息</text>
+      
+      <view class="input-group">
+        <text class="input-label">诊断 <text class="required">*</text></text>
+        <picker mode="selector" range="{{diagnosisTypes}}" bindchange="onDiagnosisChange">
+          <view class="picker-field">
+            {{diagnosis || '请选择诊断'}}
+          </view>
+        </picker>
+      </view>
+
+      <view class="input-group">
+        <text class="input-label">病程 <text class="required">*</text></text>
+        <view class="duration-inputs">
+          <input class="input-field duration-input" type="digit" 
+                 placeholder="年" bindinput="onDurationYearInput" />
+          <text class="duration-sep">年</text>
+          <input class="input-field duration-input" type="digit" 
+                 placeholder="月" bindinput="onDurationMonthInput" />
+          <text class="duration-sep">月</text>
+        </view>
+      </view>
+
+      <view class="input-group">
+        <text class="input-label">首次发病时间</text>
+        <picker mode="date" value="{{firstOnsetDate}}" 
+                start="1900-01-01" end="{{currentDate}}" 
+                bindchange="onFirstOnsetChange">
+          <view class="picker-field">
+            {{firstOnsetDate || '请选择日期'}}
+          </view>
+        </picker>
+      </view>
+    </view>
+
+    <view class="card">
+      <text class="section-title">用药信息</text>
+      
+      <view class="input-group">
+        <text class="input-label">当前用药情况 <text class="required">*</text></text>
+        <view class="medication-list">
+          <view class="medication-item" wx:for="{{medications}}" wx:key="index">
+            <view class="medication-header">
+              <text class="medication-name">{{item.name || '未填写'}}</text>
+              <text class="medication-dose">{{item.dose || '未填写'}}</text>
+              <text class="medication-freq">{{item.frequency || '未填写'}}</text>
+              <view class="medication-actions">
+                <text class="action-edit" bindtap="editMedication" data-index="{{index}}">编辑</text>
+                <text class="action-delete" bindtap="deleteMedication" data-index="{{index}}">删除</text>
+              </view>
+            </view>
+          </view>
+        </view>
+        <button class="btn-secondary small" bindtap="addMedication">+ 添加药物</button>
+      </view>
+
+      <view class="input-group">
+        <text class="input-label">既往药物过敏史</text>
+        <textarea class="textarea-field" placeholder="如有过敏史请填写" 
+                  bindinput="onAllergyInput" maxlength="200" />
+      </view>
+    </view>
+  </scroll-view>
+
+  <view class="form-footer">
+    <button class="btn-primary" bindtap="handleSubmit" 
+            loading="{{submitting}}" disabled="{{!canSubmit}}">
+      下一步
+    </button>
+  </view>
+
+  <!-- 添加药物弹窗 -->
+  <view class="modal-mask" wx:if="{{showMedicationModal}}" bindtap="closeMedicationModal"></view>
+  <view class="modal-content" wx:if="{{showMedicationModal}}">
+    <view class="modal-header">
+      <text class="modal-title">{{editingMedication ? '编辑药物' : '添加药物'}}</text>
+    </view>
+    <view class="modal-body">
+      <view class="input-group">
+        <text class="input-label">药物名称</text>
+        <input class="input-field" placeholder="请输入药物名称" 
+               value="{{medicationForm.name}}" bindinput="onMedicationNameInput" />
+      </view>
+      <view class="input-group">
+        <text class="input-label">剂量</text>
+        <input class="input-field" placeholder="如：50mg" 
+               value="{{medicationForm.dose}}" bindinput="onMedicationDoseInput" />
+      </view>
+      <view class="input-group">
+        <text class="input-label">服药频率</text>
+        <input class="input-field" placeholder="如：每日一次" 
+               value="{{medicationForm.frequency}}" bindinput="onMedicationFreqInput" />
+      </view>
+    </view>
+    <view class="modal-footer">
+      <button class="btn-secondary small" bindtap="closeMedicationModal">取消</button>
+      <button class="btn-primary small" bindtap="saveMedication">保存</button>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,91 @@
+<!-- pages/self-assessment/self-assessment.wxml -->
+<view class="container">
+  <view class="header-card">
+    <text class="header-title">自我测评</text>
+    <text class="header-desc">定期测评，了解自己的用药情况和健康状况</text>
+  </view>
+
+  <view class="assessment-grid">
+    <view class="assessment-item" bindtap="goToAssessment" data-type="drugLiteracy">
+      <image class="item-icon" src="/images/icons/drug-literacy.png"></image>
+      <text class="item-title">药物素养评估</text>
+      <text class="item-desc">评估您对药物的了解程度</text>
+      <view class="item-status">
+        <text class="status-text" wx:if="{{latestResults.drugLiteracy}}">
+          上次得分: {{latestResults.drugLiteracy.score}}分
+        </text>
+        <text class="status-badge" wx:else>未测评</text>
+      </view>
+    </view>
+
+    <view class="assessment-item" bindtap="goToAssessment" data-type="mmas8">
+      <image class="item-icon" src="/images/icons/compliance.png"></image>
+      <text class="item-title">服药依从性评估</text>
+      <text class="item-desc">MMAS-8 服药依从性量表</text>
+      <view class="item-status">
+        <text class="status-text" wx:if="{{latestResults.mmas8}}">
+          上次得分: {{latestResults.mmas8.score}}分
+        </text>
+        <text class="status-badge" wx:else>未测评</text>
+      </view>
+    </view>
+
+    <view class="assessment-item" bindtap="goToAssessment" data-type="selfManagement">
+      <image class="item-icon" src="/images/icons/self-management.png"></image>
+      <text class="item-title">精神症状自我管理</text>
+      <text class="item-desc">评估自我管理能力</text>
+      <view class="item-status">
+        <text class="status-text" wx:if="{{latestResults.selfManagement}}">
+          上次得分: {{latestResults.selfManagement.score}}分
+        </text>
+        <text class="status-badge" wx:else>未测评</text>
+      </view>
+    </view>
+
+    <view class="assessment-item" bindtap="goToAssessment" data-type="selfEfficacy">
+      <image class="item-icon" src="/images/icons/self-efficacy.png"></image>
+      <text class="item-title">合理用药自我效能</text>
+      <text class="item-desc">评估用药信心</text>
+      <view class="item-status">
+        <text class="status-text" wx:if="{{latestResults.selfEfficacy}}">
+          上次得分: {{latestResults.selfEfficacy.score}}分
+        </text>
+        <text class="status-badge" wx:else>未测评</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="history-section">
+    <view class="section-header">
+      <text class="section-title">历史测评记录</text>
+      <text class="more-link" bindtap="viewAllHistory">查看全部 ></text>
+    </view>
+
+    <view class="history-list">
+      <view class="history-item" wx:for="{{recentHistory}}" wx:key="id">
+        <view class="history-info">
+          <text class="history-type">{{getAssessmentTypeName(item.type)}}</text>
+          <text class="history-date">{{item.createTime}}</text>
+        </view>
+        <view class="history-score">
+          <text class="score-value">{{item.score}}</text>
+          <text class="score-unit">分</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="empty-state" wx:if="{{recentHistory.length === 0}}">
+      <image class="empty-icon" src="/images/icons/empty-assessment.png"></image>
+      <text class="empty-text">暂无测评记录</text>
+    </view>
+  </view>
+
+  <view class="tip-section">
+    <text class="tip-title">💡 测评小贴士</text>
+    <text class="tip-content">
+      1. 建议每月进行一次全面测评，及时了解自身状况变化
+      2. 测评结果仅供参考，具体用药请遵医嘱
+      3. 如发现得分明显下降，建议及时咨询医生
+    </text>
+  </view>
+</view>

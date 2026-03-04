@@ -1,0 +1,41 @@
+<!-- pages/drug-library/detail/detail.wxml -->
+<view class="detail-container">
+  <view class="detail-header">
+    <text class="detail-title">{{content.title}}</text>
+    <view class="detail-meta">
+      <text class="category">{{content.category}}</text>
+      <text class="read-count">阅读 {{content.readCount || 0}}</text>
+      <text class="date">{{content.createTime}}</text>
+    </view>
+  </view>
+
+  <view class="detail-content">
+    <rich-text nodes="{{formattedContent}}"></rich-text>
+  </view>
+
+  <view class="action-buttons">
+    <button class="btn-secondary" bindtap="handleCollect">
+      <image class="btn-icon" src="/images/icons/collect.png"></image>
+      {{isCollected ? '已收藏' : '收藏'}}
+    </button>
+    <button class="btn-secondary" bindtap="handleShare">
+      <image class="btn-icon" src="/images/icons/share.png"></image>
+      分享
+    </button>
+    <button class="btn-primary" bindtap="markAsRead" wx:if="{{!isRead}}">
+      <image class="btn-icon" src="/images/icons/check.png"></image>
+      标记为已读
+    </button>
+  </view>
+
+  <view class="related-contents" wx:if="{{relatedContents.length > 0}}">
+    <text class="section-title">相关推荐</text>
+    <view class="related-list">
+      <view class="related-item" wx:for="{{relatedContents}}" wx:key="id"
+            bindtap="goToDetail" data-id="{{item.id}}">
+        <text class="related-title">{{item.title}}</text>
+        <text class="related-category">{{item.category}}</text>
+      </view>
+    </view>
+  </view>
+</view>

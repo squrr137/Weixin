@@ -1,0 +1,62 @@
+<!-- pages/profile/points/points.wxml -->
+<view class="points-container">
+  <view class="points-header">
+    <view class="total-points">
+      <text class="points-label">当前积分</text>
+      <text class="points-value">{{totalPoints}}</text>
+    </view>
+    <view class="points-rule" bindtap="showPointsRule">
+      <image class="rule-icon" src="/images/icons/rule.png"></image>
+      <text>积分规则</text>
+    </view>
+  </view>
+
+  <view class="points-tips">
+    <text class="tips-title">如何获取积分？</text>
+    <view class="tips-list">
+      <view class="tip-item">
+        <text class="tip-dot">•</text>
+        <text class="tip-text">完成学习内容 +10积分</text>
+      </view>
+      <view class="tip-item">
+        <text class="tip-dot">•</text>
+        <text class="tip-text">按时服药打卡 +5积分</text>
+      </view>
+      <view class="tip-item">
+        <text class="tip-dot">•</text>
+        <text class="tip-text">完成测评 +20积分</text>
+      </view>
+      <view class="tip-item">
+        <text class="tip-dot">•</text>
+        <text class="tip-text">连续7天打卡 +50积分</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="points-history">
+    <view class="section-header">
+      <text class="section-title">积分记录</text>
+      <picker mode="selector" range="{{timeRanges}}" bindchange="onTimeRangeChange">
+        <view class="time-range">
+          <text>{{currentTimeRange}}</text>
+          <image class="arrow-icon" src="/images/icons/arrow-down.png"></image>
+        </view>
+      </picker>
+    </view>
+
+    <view class="history-list">
+      <view class="history-item" wx:for="{{pointsRecords}}" wx:key="id">
+        <view class="history-info">
+          <text class="history-reason">{{item.reason}}</text>
+          <text class="history-time">{{item.createTime}}</text>
+        </view>
+        <text class="history-points">+{{item.points}}</text>
+      </view>
+    </view>
+
+    <view class="empty-state" wx:if="{{pointsRecords.length === 0}}">
+      <image class="empty-icon" src="/images/icons/empty-points.png"></image>
+      <text class="empty-text">暂无积分记录</text>
+    </view>
+  </view>
+</view>

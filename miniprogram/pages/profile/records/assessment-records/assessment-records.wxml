@@ -1,0 +1,56 @@
+<!-- pages/profile/records/assessment-records/assessment-records.wxml -->
+<view class="records-container">
+  <view class="header-card">
+    <text class="header-title">测评记录</text>
+    <text class="header-desc">查看您的历史测评结果</text>
+  </view>
+
+  <view class="stats-summary">
+    <view class="stat-item">
+      <text class="stat-value">{{stats.total}}</text>
+      <text class="stat-label">总测评</text>
+    </view>
+    <view class="stat-item">
+      <text class="stat-value">{{stats.avgScore}}</text>
+      <text class="stat-label">平均分</text>
+    </view>
+    <view class="stat-item">
+      <text class="stat-value">{{stats.points}}分</text>
+      <text class="stat-label">获得积分</text>
+    </view>
+  </view>
+
+  <view class="chart-section" wx:if="{{chartData.length > 0}}">
+    <text class="section-title">趋势图</text>
+    <canvas canvas-id="trendChart" class="trend-chart"></canvas>
+  </view>
+
+  <view class="records-list">
+    <view class="list-header">
+      <text class="section-title">测评历史</text>
+      <picker mode="selector" range="{{assessmentTypes}}" bindchange="onTypeChange">
+        <view class="type-selector">
+          <text>{{currentType || '全部类型'}}</text>
+          <image class="arrow-icon" src="/images/icons/arrow-down.png"></image>
+        </view>
+      </picker>
+    </view>
+
+    <view class="record-item" wx:for="{{records}}" wx:key="id" bindtap="viewDetail" data-id="{{id}}">
+      <view class="record-info">
+        <text class="record-type">{{getTypeName(item.type)}}</text>
+        <text class="record-time">{{item.createTime}}</text>
+      </view>
+      <view class="record-result">
+        <text class="record-score">{{item.score}}分</text>
+        <text class="record-level {{getLevelClass(item.result)}}">{{item.result}}</text>
+      </view>
+    </view>
+
+    <view class="empty-state" wx:if="{{records.length === 0}}">
+      <image class="empty-icon" src="/images/icons/empty-assessment.png"></image>
+      <text class="empty-text">暂无测评记录</text>
+      <button class="btn-secondary" bindtap="goToAssessment">去测评</button>
+    </view>
+  </view>
+</view>

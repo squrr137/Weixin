@@ -1,0 +1,67 @@
+<!-- pages/consent/consent.wxml -->
+<view class="consent-container">
+  <view class="consent-header">
+    <image class="consent-icon" src="/images/icons/consent.png" mode="aspectFit"></image>
+    <text class="consent-title">知情同意书</text>
+  </view>
+
+  <scroll-view class="consent-content" scroll-y>
+    <view class="consent-section">
+      <text class="section-head">平台功能说明</text>
+      <text class="section-text">
+        本小程序旨在为精神障碍康复期患者提供用药管理、健康教育、自我测评等服务，
+        帮助您更好地了解和使用药物，提升用药依从性和自我管理能力。
+      </text>
+    </view>
+
+    <view class="consent-section">
+      <text class="section-head">信息收集说明</text>
+      <text class="section-text">
+        我们将收集以下信息用于健康管理和研究分析：
+      </text>
+      <view class="info-list">
+        <view class="info-item">• 基本信息：年龄、性别等人口学信息</view>
+        <view class="info-item">• 用药信息：药物名称、服药时间、用药反应等</view>
+        <view class="info-item">• 测评数据：药物素养、服药依从性等自评结果</view>
+        <view class="info-item">• 使用记录：学习进度、打卡记录等行为数据</view>
+      </view>
+    </view>
+
+    <view class="consent-section">
+      <text class="section-head">隐私与数据安全</text>
+      <text class="section-text">
+        1. 所有数据将进行加密存储，仅用于您的个人健康管理和本研究项目的统计分析。
+        2. 未经您的明确同意，我们不会将您的个人信息用于任何商业用途或与第三方共享。
+        3. 您有权随时查看、更正您的个人信息，或申请注销账号。
+      </text>
+    </view>
+
+    <view class="consent-section">
+      <text class="section-head">用户权利说明</text>
+      <text class="section-text">
+        1. 您可自愿选择是否使用本小程序的所有功能。
+        2. 您可随时停止使用并申请注销账号，已收集的数据将按照相关法规处理。
+        3. 在使用过程中如有任何疑问，可通过"个人中心-问题留言"联系我们。
+      </text>
+    </view>
+  </scroll-view>
+
+  <view class="consent-footer">
+    <view class="agreement-check">
+      <checkbox-group bindchange="onAgreeChange">
+        <checkbox value="agree" color="#4A90E2">
+          <text class="agree-text">我已仔细阅读并同意以上条款</text>
+        </checkbox>
+      </checkbox-group>
+    </view>
+    
+    <button class="btn-primary {{!agreed ? 'disabled' : ''}}" 
+            disabled="{{!agreed}}" bindtap="handleConfirm">
+      确认并继续
+    </button>
+    
+    <button class="btn-secondary" bindtap="handleReject">
+      暂不使用
+    </button>
+  </view>
+</view>

@@ -1,0 +1,64 @@
+<!-- pages/profile/records/learning-records/learning-records.wxml -->
+<view class="records-container">
+  <view class="header-card">
+    <text class="header-title">学习记录</text>
+    <text class="header-desc">查看您的学习进度和历史</text>
+  </view>
+
+  <view class="stats-summary">
+    <view class="stat-item">
+      <text class="stat-value">{{stats.total}}</text>
+      <text class="stat-label">总学习</text>
+    </view>
+    <view class="stat-item">
+      <text class="stat-value">{{stats.thisMonth}}</text>
+      <text class="stat-label">本月学习</text>
+    </view>
+    <view class="stat-item">
+      <text class="stat-value">{{stats.points}}分</text>
+      <text class="stat-label">获得积分</text>
+    </view>
+  </view>
+
+  <view class="category-stats">
+    <view class="category-item" wx:for="{{categoryStats}}" wx:key="category">
+      <text class="category-name">{{category.name}}</text>
+      <view class="category-progress">
+        <view class="progress-bar">
+          <view class="progress-fill" style="width: {{category.percentage}}"></view>
+        </view>
+        <text class="progress-text">{{category.count}}/{{category.total}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="records-list">
+    <view class="list-header">
+      <text class="section-title">学习历史</text>
+      <picker mode="selector" range="{{timeRanges}}" bindchange="onTimeRangeChange">
+        <view class="time-range">
+          <text>{{currentTimeRange}}</text>
+          <image class="arrow-icon" src="/images/icons/arrow-down.png"></image>
+        </view>
+      </picker>
+    </view>
+
+    <view class="record-item" wx:for="{{records}}" wx:key="id">
+      <image class="record-icon" src="/images/icons/learning-record.png"></image>
+      <view class="record-info">
+        <text class="record-title">{{item.title}}</text>
+        <view class="record-meta">
+          <text class="record-category">{{item.category}}</text>
+          <text class="record-time">{{item.createTime}}</text>
+        </view>
+      </view>
+      <text class="record-points">+{{item.points || 10}}分</text>
+    </view>
+
+    <view class="empty-state" wx:if="{{records.length === 0}}">
+      <image class="empty-icon" src="/images/icons/empty-learning.png"></image>
+      <text class="empty-text">暂无学习记录</text>
+      <button class="btn-secondary" bindtap="goToDrugLibrary">去学习</button>
+    </view>
+  </view>
+</view>

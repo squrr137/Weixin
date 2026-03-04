@@ -1,0 +1,47 @@
+<!-- pages/drug-library/drug-library.wxml -->
+<view class="container">
+  <view class="search-bar">
+    <view class="search-box">
+      <image class="search-icon" src="/images/icons/search.png"></image>
+      <input class="search-input" placeholder="搜索用药知识" 
+             bindinput="onSearchInput" bindconfirm="handleSearch" />
+    </view>
+  </view>
+
+  <view class="category-tabs">
+    <scroll-view class="tab-scroll" scroll-x show-scrollbar="false">
+      <view class="tab-list">
+        <view class="tab-item {{currentCategory === 'all' ? 'active' : ''}}" 
+              bindtap="switchCategory" data-category="all">全部</view>
+        <view class="tab-item {{currentCategory === '用药基础知识' ? 'active' : ''}}" 
+              bindtap="switchCategory" data-category="用药基础知识">基础知识</view>
+        <view class="tab-item {{currentCategory === '正确服药方法' ? 'active' : ''}}" 
+              bindtap="switchCategory" data-category="正确服药方法">正确服药</view>
+        <view class="tab-item {{currentCategory === '常见不适与应对' ? 'active' : ''}}" 
+              bindtap="switchCategory" data-category="常见不适与应对">不适应对</view>
+        <view class="tab-item {{currentCategory === '用药误区与风险认知' ? 'active' : ''}}" 
+              bindtap="switchCategory" data-category="用药误区与风险认知">用药误区</view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <view class="content-list">
+    <view class="content-item" wx:for="{{filteredContents}}" wx:key="id" 
+          bindtap="goToDetail" data-id="{{item.id}}">
+      <image class="content-cover" src="{{item.cover || '/images/library/default.png'}}"></image>
+      <view class="content-info">
+        <text class="content-title">{{item.title}}</text>
+        <text class="content-category">{{item.category}}</text>
+        <view class="content-meta">
+          <text class="read-count">阅读 {{item.readCount || 0}}</text>
+          <text class="create-time">{{item.createTime}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty-state" wx:if="{{filteredContents.length === 0}}">
+    <image class="empty-icon" src="/images/icons/empty.png"></image>
+    <text class="empty-text">暂无相关内容</text>
+  </view>
+</view>

@@ -1,0 +1,104 @@
+<!-- pages/drug-management/drug-management.wxml -->
+<view class="container">
+  <view class="header-actions">
+    <button class="btn-primary small" bindtap="goToAddMedication">
+      <image class="btn-icon" src="/images/icons/add.png"></image>
+      添加药物
+    </button>
+  </view>
+
+  <view class="date-picker">
+    <picker mode="date" value="{{selectedDate}}" bindchange="onDateChange">
+      <view class="date-display">
+        <image class="calendar-icon" src="/images/icons/calendar.png"></image>
+        <text>{{displayDate}}</text>
+        <image class="arrow-icon" src="/images/icons/arrow-down.png"></image>
+      </view>
+    </picker>
+  </view>
+
+  <view class="medication-stats">
+    <view class="stat-card">
+      <text class="stat-value">{{stats.total}}</text>
+      <text class="stat-label">总药物</text>
+    </view>
+    <view class="stat-card">
+      <text class="stat-value">{{stats.completed}}</text>
+      <text class="stat-label">已服用</text>
+    </view>
+    <view class="stat-card">
+      <text class="stat-value">{{stats.pending}}</text>
+      <text class="stat-label">待服用</text>
+    </view>
+    <view class="stat-card">
+      <text class="stat-value">{{stats.missed}}</text>
+      <text class="stat-label">未服用</text>
+    </view>
+  </view>
+
+  <view class="medication-timeline">
+    <view class="timeline-header">
+      <text class="section-title">用药时间线</text>
+      <text class="compliance-rate">依从率 {{complianceRate}}%</text>
+    </view>
+
+    <view class="timeline-list">
+      <view class="timeline-item" wx:for="{{timelineData}}" wx:key="id">
+        <view class="time-marker">
+          <text class="time">{{item.time}}</text>
+          <view class="time-line"></view>
+        </view>
+        <view class="medication-card {{item.status}}">
+          <view class="medication-header">
+            <text class="medication-name">{{item.name}}</text>
+            <text class="medication-dosage">{{item.dosage}}</text>
+          </view>
+          <view class="medication-footer">
+            <text class="medication-note">{{item.note || '无备注'}}</text>
+            <view class="status-actions">
+              <block wx:if="{{item.status === 'pending'}}">
+                <button class="status-btn take" bindtap="takeMedication" 
+                        data-id="{{item.id}}" data-stop-propagation>服用</button>
+                <button class="status-btn delay" bindtap="delayMedication" 
+                        data-id="{{item.id}}" data-stop-propagation>延迟</button>
+              </block>
+              <block wx:elif="{{item.status === 'completed'}}">
+                <text class="status-badge completed">已服用</text>
+              </block>
+              <block wx:elif="{{item.status === 'delayed'}}">
+                <text class="status-badge delayed">已延迟</text>
+              </block>
+              <block wx:else>
+                <text class="status-badge missed">未服用</text>
+              </block>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="empty-state" wx:if="{{timelineData.length === 0}}">
+      <image class="empty-icon" src="/images/icons/empty-med.png"></image>
+      <text class="empty-text">今日暂无用药计划</text>
+      <button class="btn-secondary" bindtap="goToAddMedication">添加药物</button>
+    </view>
+  </view>
+
+  <view class="quick-records">
+    <text class="section-title">快速记录</text>
+    <view class="record-buttons">
+      <button class="record-btn" bindtap="goToDiscomfort">
+        <image class="record-icon" src="/images/icons/discomfort.png"></image>
+        <text>不适记录</text>
+      </button>
+      <button class="record-btn" bindtap="goToMissedRecord">
+        <image class="record-icon" src="/images/icons/missed.png"></image>
+        <text>漏服记录</text>
+      </button>
+      <button class="record-btn" bindtap="goToSideEffect">
+        <image class="record-icon" src="/images/icons/side-effect.png"></image>
+        <text>副作用</text>
+      </button>
+    </view>
+  </view>
+</view>

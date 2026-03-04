@@ -1,0 +1,74 @@
+<!-- pages/profile/profile.wxml -->
+<view class="profile-container">
+  <view class="profile-header">
+    <view class="avatar-section">
+      <image class="avatar" src="{{userInfo.avatar || '/images/default-avatar.png'}}"></image>
+      <view class="user-info">
+        <text class="user-name">{{userInfo.nickname || '用户'}}</text>
+        <text class="user-phone">{{userInfo.phone || '未绑定手机'}}</text>
+      </view>
+    </view>
+    <view class="points-section" bindtap="goToPoints">
+      <text class="points-label">积分</text>
+      <text class="points-value">{{points}}</text>
+    </view>
+  </view>
+
+  <view class="stats-grid">
+    <view class="stat-item" bindtap="goToMedicationRecords">
+      <text class="stat-value">{{stats.medicationDays}}</text>
+      <text class="stat-label">连续用药</text>
+    </view>
+    <view class="stat-item" bindtap="goToLearningRecords">
+      <text class="stat-value">{{stats.learnedCount}}</text>
+      <text class="stat-label">已学内容</text>
+    </view>
+    <view class="stat-item" bindtap="goToAssessmentRecords">
+      <text class="stat-value">{{stats.assessmentCount}}</text>
+      <text class="stat-label">测评次数</text>
+    </view>
+    <view class="stat-item" bindtap="goToPoints">
+      <text class="stat-value">{{stats.rank || '--'}}</text>
+      <text class="stat-label">积分排名</text>
+    </view>
+  </view>
+
+  <view class="menu-grid">
+    <view class="menu-item" bindtap="goToProfileEdit">
+      <image class="menu-icon" src="/images/icons/profile-edit.png"></image>
+      <text class="menu-text">个人资料</text>
+    </view>
+    <view class="menu-item" bindtap="goToMedicationRecords">
+      <image class="menu-icon" src="/images/icons/med-history.png"></image>
+      <text class="menu-text">用药记录</text>
+    </view>
+    <view class="menu-item" bindtap="goToLearningRecords">
+      <image class="menu-icon" src="/images/icons/learning.png"></image>
+      <text class="menu-text">学习记录</text>
+    </view>
+    <view class="menu-item" bindtap="goToAssessmentRecords">
+      <image class="menu-icon" src="/images/icons/assessment-history.png"></image>
+      <text class="menu-text">测评历史</text>
+    </view>
+    <view class="menu-item" bindtap="goToPoints">
+      <image class="menu-icon" src="/images/icons/points.png"></image>
+      <text class="menu-text">积分中心</text>
+    </view>
+    <view class="menu-item" bindtap="goToQuestions">
+      <image class="menu-icon" src="/images/icons/questions.png"></image>
+      <text class="menu-text">问题留言</text>
+    </view>
+    <view class="menu-item" bindtap="goToSupport">
+      <image class="menu-icon" src="/images/icons/support.png"></image>
+      <text class="menu-text">支持与帮助</text>
+    </view>
+    <view class="menu-item" bindtap="goToSettings">
+      <image class="menu-icon" src="/images/icons/settings.png"></image>
+      <text class="menu-text">设置</text>
+    </view>
+  </view>
+
+  <view class="action-buttons">
+    <button class="btn-secondary" bindtap="handleLogout">退出登录</button>
+  </view>
+</view>

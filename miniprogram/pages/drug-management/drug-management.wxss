@@ -1,0 +1,288 @@
+/* pages/drug-management/drug-management.wxss */
+.container {
+    padding: 30rpx;
+  }
+  
+  .header-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 30rpx;
+  }
+  
+  .btn-primary.small {
+    width: auto;
+    padding: 16rpx 40rpx;
+    font-size: 28rpx;
+  }
+  
+  .btn-icon {
+    width: 32rpx;
+    height: 32rpx;
+    margin-right: 8rpx;
+    vertical-align: middle;
+  }
+  
+  .date-picker {
+    background-color: #FFFFFF;
+    border-radius: 16rpx;
+    padding: 24rpx;
+    margin-bottom: 30rpx;
+    box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+  }
+  
+  .date-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .calendar-icon {
+    width: 40rpx;
+    height: 40rpx;
+    margin-right: 16rpx;
+  }
+  
+  .date-display text {
+    font-size: 32rpx;
+    font-weight: 500;
+    color: #333333;
+    margin-right: 16rpx;
+  }
+  
+  .arrow-icon {
+    width: 24rpx;
+    height: 24rpx;
+  }
+  
+  .medication-stats {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40rpx;
+  }
+  
+  .stat-card {
+    flex: 1;
+    background-color: #FFFFFF;
+    border-radius: 16rpx;
+    padding: 20rpx 0;
+    text-align: center;
+    margin-right: 20rpx;
+    box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+  }
+  
+  .stat-card:last-child {
+    margin-right: 0;
+  }
+  
+  .stat-value {
+    display: block;
+    font-size: 44rpx;
+    font-weight: 700;
+    color: #4A90E2;
+    margin-bottom: 8rpx;
+  }
+  
+  .stat-label {
+    display: block;
+    font-size: 24rpx;
+    color: #999999;
+  }
+  
+  .medication-timeline {
+    background-color: #FFFFFF;
+    border-radius: 16rpx;
+    padding: 30rpx;
+    margin-bottom: 30rpx;
+  }
+  
+  .timeline-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30rpx;
+  }
+  
+  .compliance-rate {
+    font-size: 28rpx;
+    color: #4CAF50;
+    font-weight: 500;
+  }
+  
+  .timeline-list {
+    position: relative;
+  }
+  
+  .timeline-item {
+    display: flex;
+    margin-bottom: 30rpx;
+  }
+  
+  .time-marker {
+    width: 120rpx;
+    position: relative;
+    padding-right: 30rpx;
+  }
+  
+  .time {
+    display: block;
+    font-size: 28rpx;
+    font-weight: 500;
+    color: #4A90E2;
+    margin-bottom: 8rpx;
+  }
+  
+  .time-line {
+    position: absolute;
+    top: 40rpx;
+    right: 0;
+    width: 2rpx;
+    height: 100%;
+    background-color: #E0E0E0;
+  }
+  
+  .medication-card {
+    flex: 1;
+    background-color: #F8F9FA;
+    border-radius: 12rpx;
+    padding: 20rpx;
+    margin-left: 20rpx;
+    border-left: 8rpx solid #4A90E2;
+  }
+  
+  .medication-card.completed {
+    border-left-color: #4CAF50;
+    opacity: 0.8;
+  }
+  
+  .medication-card.delayed {
+    border-left-color: #FF9800;
+  }
+  
+  .medication-card.missed {
+    border-left-color: #F44336;
+  }
+  
+  .medication-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16rpx;
+  }
+  
+  .medication-name {
+    font-size: 32rpx;
+    font-weight: 500;
+    color: #333333;
+  }
+  
+  .medication-dosage {
+    font-size: 28rpx;
+    color: #666666;
+  }
+  
+  .medication-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .medication-note {
+    font-size: 24rpx;
+    color: #999999;
+  }
+  
+  .status-actions {
+    display: flex;
+    gap: 16rpx;
+  }
+  
+  .status-btn {
+    font-size: 24rpx;
+    padding: 8rpx 24rpx;
+    border-radius: 30rpx;
+    margin: 0;
+  }
+  
+  .status-btn.take {
+    background-color: #4CAF50;
+    color: #FFFFFF;
+  }
+  
+  .status-btn.delay {
+    background-color: #FF9800;
+    color: #FFFFFF;
+  }
+  
+  .status-badge {
+    font-size: 24rpx;
+    padding: 8rpx 24rpx;
+    border-radius: 30rpx;
+  }
+  
+  .status-badge.completed {
+    background-color: #E8F5E9;
+    color: #4CAF50;
+  }
+  
+  .status-badge.delayed {
+    background-color: #FFF3E0;
+    color: #FF9800;
+  }
+  
+  .status-badge.missed {
+    background-color: #FFEBEE;
+    color: #F44336;
+  }
+  
+  .quick-records {
+    background-color: #FFFFFF;
+    border-radius: 16rpx;
+    padding: 30rpx;
+    margin-top: 20rpx;
+  }
+  
+  .record-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20rpx;
+  }
+  
+  .record-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #F5F7FA;
+    border: none;
+    padding: 20rpx;
+    border-radius: 16rpx;
+    width: 200rpx;
+  }
+  
+  .record-icon {
+    width: 48rpx;
+    height: 48rpx;
+    margin-bottom: 10rpx;
+  }
+  
+  .record-btn text {
+    font-size: 26rpx;
+    color: #666666;
+  }
+  
+  .empty-state {
+    text-align: center;
+    padding: 60rpx 0;
+  }
+  
+  .empty-icon {
+    width: 120rpx;
+    height: 120rpx;
+    margin-bottom: 20rpx;
+    opacity: 0.5;
+  }
+  
+  .empty-text {
+    display: block;
+    font-size: 28rpx;
+    color: #999999;
+    margin-bottom: 30rpx;
+  }

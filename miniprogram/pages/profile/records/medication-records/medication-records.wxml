@@ -1,0 +1,99 @@
+<!-- pages/profile/records/medication-records/medication-records.wxml -->
+<view class="records-container">
+  <view class="header-card">
+    <text class="header-title">用药记录</text>
+    <text class="header-desc">查看您的历史用药情况</text>
+  </view>
+
+  <view class="date-filter">
+    <picker mode="date" value="{{selectedDate}}" bindchange="onDateChange">
+      <view class="date-display">
+        <image class="calendar-icon" src="/images/icons/calendar.png"></image>
+        <text>{{displayDate}}</text>
+        <image class="arrow-icon" src="/images/icons/arrow-down.png"></image>
+      </view>
+    </picker>
+  </view>
+
+  <view class="stats-summary">
+    <view class="stat-item">
+      <text class="stat-value">{{stats.total}}</text>
+      <text class="stat-label">总用药</text>
+    </view>
+    <view class="stat-item">
+      <text class="stat-value">{{stats.completed}}</text>
+      <text class="stat-label">已服用</text>
+    </view>
+    <view class="stat-item">
+      <text class="stat-value">{{stats.compliance}}%</text>
+      <text class="stat-label">依从率</text>
+    </view>
+  </view>
+
+  <view class="records-list">
+    <view class="record-item" wx:for="{{records}}" wx:key="id">
+      <view class="record-time">
+        <text class="time">{{item.time}}</text>
+      </view>
+      <view class="record-info">
+        <view class="medication-info">
+          <text class="medication-name">{{item.name}}</text>
+          <text class="medication-dosage">{{item.dosage}}</text>
+        </view>
+        <view class="record-status">
+          <text class="status-badge {{item.status}}">
+            {{item.status === 'completed' ? '已服用' : 
+              item.status === 'missed' ? '未服用' : 
+              item.status === 'delayed' ? '延迟' : '待服用'}}
+          </text>
+        </view>
+      </view>
+      <view class="record-note" wx:if="{{item.note}}">
+        <text class="note-text">{{item.note}}</text>
+      </view>
+    </view>
+
+    <view class="empty-state" wx:if="{{records.length === 0}}">
+      <image class="empty-icon" src="/images/icons/empty-records.png"></image>
+      <text class="empty-text">暂无用药记录</text>
+    </view>
+  </view>
+
+  <view class="calendar-view" wx:if="{{showCalendar}}">
+    <view class="calendar-header">
+      <text class="calendar-title">月度概览</text>
+      <picker mode="date" fields="month" value="{{currentMonth}}" bindchange="onMonthChange">
+        <view class="month-selector">
+          <text>{{displayMonth}}</text>
+          <image class="arrow-icon" src="/images/icons/arrow-down.png"></image>
+        </view>
+      </picker>
+    </view>
+    
+    <view class="calendar-grid">
+      <view class="weekday-header">
+        <view wx:for="{{['一','二','三','四','五','六','日']}}" wx:key="index">
+          <text>{{item}}</text>
+        </view>
+      </view>
+      <view class="calendar-days">
+        <view class="calendar-day" wx:for="{{calendarDays}}" wx:key="index" 
+              bindtap="selectDay" data-date="{{item.date}}">
+          <text class="day-number">{{item.day}}</text>
+          <view class="day-status" wx:if="{{item.hasRecord}}">
+            <text class="status-dot {{item.compliance > 80 ? 'good' : item.compliance > 50 ? 'medium' : 'poor'}}"></text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="view-toggle">
+    <button class="toggle-btn {{!showCalendar ? 'active' : ''}}" bindtap="toggleView" data-view="list">
+      列表视图
+    </button>
+    <button class="toggle-btn {{showCalendar ? 'active' : ''}}" bindtap="toggleView" data-view="calendar">
+      日历视图
+    </button>
+  </view>
+</view>

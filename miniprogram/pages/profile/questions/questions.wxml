@@ -1,0 +1,76 @@
+<!-- pages/profile/questions/questions.wxml -->
+<view class="questions-container">
+  <view class="header-actions">
+    <button class="btn-primary" bindtap="askQuestion">
+      <image class="btn-icon" src="/images/icons/ask.png"></image>
+      我要提问
+    </button>
+  </view>
+
+  <view class="faq-section" wx:if="{{showFAQ}}">
+    <text class="section-title">常见问题</text>
+    <view class="faq-list">
+      <view class="faq-item" wx:for="{{faqList}}" wx:key="id" bindtap="viewFAQ" data-id="{{id}}">
+        <text class="faq-question">{{item.question}}</text>
+        <image class="arrow-icon" src="/images/icons/arrow-right.png"></image>
+      </view>
+    </view>
+  </view>
+
+  <view class="questions-list">
+    <view class="list-header">
+      <text class="section-title">我的提问</text>
+      <picker mode="selector" range="{{statusFilters}}" bindchange="onStatusChange">
+        <view class="status-filter">
+          <text>{{currentStatus}}</text>
+          <image class="arrow-icon" src="/images/icons/arrow-down.png"></image>
+        </view>
+      </picker>
+    </view>
+
+    <view class="question-item" wx:for="{{questions}}" wx:key="id" bindtap="viewQuestion" data-id="{{id}}">
+      <view class="question-header">
+        <text class="question-title">{{item.title}}</text>
+        <text class="question-status {{item.status}}">
+          {{item.status === 'pending' ? '待回复' : 
+            item.status === 'replied' ? '已回复' : '已关闭'}}
+        </text>
+      </view>
+      <text class="question-preview">{{item.content}}</text>
+      <view class="question-footer">
+        <text class="question-time">{{item.createTime}}</text>
+        <text class="reply-count" wx:if="{{item.reply}}">有回复</text>
+      </view>
+    </view>
+
+    <view class="empty-state" wx:if="{{questions.length === 0}}">
+      <image class="empty-icon" src="/images/icons/empty-questions.png"></image>
+      <text class="empty-text">暂无提问</text>
+    </view>
+  </view>
+</view>
+
+<!-- 提问弹窗 -->
+<view class="modal-mask" wx:if="{{showQuestionModal}}" bindtap="closeModal"></view>
+<view class="modal-content" wx:if="{{showQuestionModal}}">
+  <view class="modal-header">
+    <text class="modal-title">提交问题</text>
+  </view>
+  <view class="modal-body">
+    <view class="input-group">
+      <text class="input-label">问题标题</text>
+      <input class="form-input" placeholder="请简要描述问题" 
+             bindinput="onTitleInput" maxlength="50" />
+    </view>
+    <view class="input-group">
+      <text class="input-label">问题详情</text>
+      <textarea class="form-textarea" placeholder="请详细描述您的问题" 
+                bindinput="onContentInput" maxlength="500" />
+    </view>
+  </view>
+  <view class="modal-footer">
+    <button class="btn-secondary" bindtap="closeModal">取消</button>
+    <button class="btn-primary" bindtap="submitQuestion" 
+            disabled="{{!canSubmit}}">提交</button>
+  </view>
+</view>

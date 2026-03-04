@@ -1,0 +1,123 @@
+/* pages/self-assessment/questionnaire/questionnaire.wxss */
+.questionnaire-container {
+    padding: 30rpx;
+    min-height: 100vh;
+    background-color: #F5F7FA;
+  }
+  
+  .progress-section {
+    margin-bottom: 30rpx;
+  }
+  
+  .progress-bar {
+    height: 8rpx;
+    background-color: #EEEEEE;
+    border-radius: 4rpx;
+    overflow: hidden;
+    margin-bottom: 10rpx;
+  }
+  
+  .progress-fill {
+    height: 100%;
+    background-color: #4A90E2;
+    border-radius: 4rpx;
+    transition: width 0.3s ease;
+  }
+  
+  .progress-text {
+    display: block;
+    text-align: right;
+    font-size: 24rpx;
+    color: #999999;
+  }
+  
+  .question-card {
+    background-color: #FFFFFF;
+    border-radius: 24rpx;
+    padding: 40rpx 30rpx;
+    margin-bottom: 40rpx;
+    box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.05);
+  }
+  
+  .question-header {
+    margin-bottom: 40rpx;
+  }
+  
+  .question-number {
+    display: inline-block;
+    font-size: 28rpx;
+    color: #4A90E2;
+    background-color: #E8F0FE;
+    padding: 8rpx 24rpx;
+    border-radius: 30rpx;
+    margin-bottom: 20rpx;
+  }
+  
+  .question-text {
+    display: block;
+    font-size: 36rpx;
+    font-weight: 500;
+    color: #333333;
+    line-height: 1.5;
+  }
+  
+  .options-list {
+    margin-top: 20rpx;
+  }
+  
+  .option-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30rpx;
+    background-color: #F8F9FA;
+    border-radius: 16rpx;
+    margin-bottom: 20rpx;
+    border: 2rpx solid transparent;
+    transition: all 0.3s ease;
+  }
+  
+  .option-item:active {
+    background-color: #F0F0F0;
+  }
+  
+  .option-content {
+    flex: 1;
+  }
+  
+  .option-text {
+    font-size: 32rpx;
+    color: #333333;
+  }
+  
+  .option-checkbox {
+    width: 40rpx;
+    height: 40rpx;
+    border-radius: 50%;
+    border: 2rpx solid #DDDDDD;
+    margin-left: 20rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .option-checkbox.checked {
+    background-color: #4A90E2;
+    border-color: #4A90E2;
+    color: #FFFFFF;
+  }
+  
+  .navigation-buttons {
+    display: flex;
+    gap: 30rpx;
+    margin-top: 40rpx;
+  }
+  
+  .navigation-buttons button {
+    flex: 1;
+    margin: 0;
+  }
+  
+  .navigation-buttons .btn-primary:disabled {
+    opacity: 0.5;
+  }

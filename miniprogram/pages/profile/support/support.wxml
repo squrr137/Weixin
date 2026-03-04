@@ -1,0 +1,79 @@
+<!-- pages/profile/support/support.wxml -->
+<view class="support-container">
+  <view class="emergency-section">
+    <text class="emergency-title">🚨 紧急求助</text>
+    <text class="emergency-desc">如果您正处于紧急情况，请立即拨打以下电话</text>
+    
+    <view class="emergency-contacts">
+      <view class="emergency-item" bindtap="callPhone" data-phone="4001619995">
+        <image class="emergency-icon" src="/images/icons/crisis.png"></image>
+        <view class="emergency-info">
+          <text class="emergency-name">心理危机干预热线</text>
+          <text class="emergency-phone">400-161-9995</text>
+        </view>
+        <text class="call-btn">呼叫</text>
+      </view>
+      
+      <view class="emergency-item" bindtap="callPhone" data-phone="01082951332">
+        <image class="emergency-icon" src="/images/icons/psychology.png"></image>
+        <view class="emergency-info">
+          <text class="emergency-name">北京心理援助热线</text>
+          <text class="emergency-phone">010-82951332</text>
+        </view>
+        <text class="call-btn">呼叫</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="faq-section">
+    <text class="section-title">常见问题</text>
+    
+    <view class="faq-list">
+      <view class="faq-item" wx:for="{{faqList}}" wx:key="id" bindtap="toggleFaq" data-id="{{id}}">
+        <view class="faq-question">
+          <text class="question-text">{{item.question}}</text>
+          <image class="arrow-icon" src="/images/icons/arrow-down.png" 
+                 style="transform: rotate({{item.expanded ? '180deg' : '0deg'}});"></image>
+        </view>
+        <view class="faq-answer" wx:if="{{item.expanded}}">
+          <text>{{item.answer}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="contact-section">
+    <text class="section-title">联系我们</text>
+    
+    <view class="contact-item" bindtap="makePhoneCall" data-phone="02112345678">
+      <image class="contact-icon" src="/images/icons/phone.png"></image>
+      <view class="contact-info">
+        <text class="contact-label">客服电话</text>
+        <text class="contact-value">021-12345678</text>
+      </view>
+    </view>
+    
+    <view class="contact-item" bindtap="copyText" data-text="service@example.com">
+      <image class="contact-icon" src="/images/icons/email.png"></image>
+      <view class="contact-info">
+        <text class="contact-label">客服邮箱</text>
+        <text class="contact-value">service@example.com</text>
+      </view>
+    </view>
+    
+    <view class="contact-item" bindtap="copyText" data-text="微信号：medhelper">
+      <image class="contact-icon" src="/images/icons/wechat.png"></image>
+      <view class="contact-info">
+        <text class="contact-label">官方微信</text>
+        <text class="contact-value">medhelper</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="disclaimer-section">
+    <text class="disclaimer-title">免责声明</text>
+    <text class="disclaimer-content">
+      本小程序提供的所有信息仅供参考，不能替代专业医疗建议。如有任何健康问题，请及时就医。紧急情况下请立即拨打急救电话。
+    </text>
+  </view>
+</view>

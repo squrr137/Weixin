@@ -1,0 +1,79 @@
+{
+    "pages": [
+      "pages/login/login",
+      "pages/consent/consent",
+      "pages/info-collect/info-collect",
+      "pages/index/index",
+      "pages/drug-management/drug-management",
+      "pages/drug-management/add/add",
+      "pages/drug-library/drug-library",
+      "pages/drug-library/detail/detail",
+      "pages/self-assessment/self-assessment",
+      "pages/self-assessment/questionnaire/questionnaire",
+      "pages/profile/profile",
+      "pages/profile/points/points",
+      "pages/profile/questions/questions",
+      "pages/profile/questions/detail/detail",
+      "pages/profile/support/support",
+      "pages/profile/records/medication-records/medication-records",
+      "pages/profile/records/learning-records/learning-records",
+      "pages/profile/records/assessment-records/assessment-records",
+      "pages/webview/webview"
+    ],
+    "window": {
+      "navigationBarBackgroundColor": "#4A90E2",
+      "navigationBarTitleText": "精神科合理用药助手",
+      "navigationBarTextStyle": "white",
+      "backgroundColor": "#F5F7FA",
+      "backgroundTextStyle": "dark",
+      "enablePullDownRefresh": true,
+      "onReachBottomDistance": 50
+    },
+    "tabBar": {
+      "color": "#999999",
+      "selectedColor": "#4A90E2",
+      "backgroundColor": "#FFFFFF",
+      "borderStyle": "black",
+      "list": [
+        {
+          "pagePath": "pages/index/index",
+          "text": "用药管理"
+        },
+        {
+          "pagePath": "pages/drug-library/drug-library",
+          "text": "药物智库"
+        },
+        {
+          "pagePath": "pages/self-assessment/self-assessment",
+          "text": "自我测评"
+        },
+        {
+          "pagePath": "pages/profile/profile",
+          "text": "个人中心"
+        }
+      ]
+    },
+    "style": "v2",
+    "sitemapLocation": "sitemap.json",
+    "useExtendedLib": {
+      "weui": true
+    },
+    "lazyCodeLoading": "requiredComponents",
+    "permission": {
+      "scope.userLocation": {
+        "desc": "您的位置信息将用于紧急求助时提供附近医院信息"
+      }
+    },
+    "requiredPrivateInfos": [
+      "getLocation",
+      "chooseLocation"
+    ],
+    "networkTimeout": {
+      "request": 30000,
+      "connectSocket": 20000,
+      "uploadFile": 60000,
+      "downloadFile": 60000
+    },
+    "debug": true,
+    "__usePrivacyCheck__": true
+  }

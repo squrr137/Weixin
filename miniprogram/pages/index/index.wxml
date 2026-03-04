@@ -1,0 +1,98 @@
+<!-- pages/index/index.wxml -->
+<view class="container">
+  <view class="header-card">
+    <view class="welcome-section">
+      <text class="greeting">您好，{{userInfo.nickname || '用户'}}</text>
+      <text class="date">{{currentDate}}</text>
+    </view>
+    
+    <view class="stats-grid">
+      <view class="stat-item" bindtap="goToMedicationRecords">
+        <text class="stat-number">{{medicationStats.total || 0}}</text>
+        <text class="stat-label">今日用药</text>
+      </view>
+      <view class="stat-item" bindtap="goToPoints">
+        <text class="stat-number">{{userPoints || 0}}</text>
+        <text class="stat-label">我的积分</text>
+      </view>
+      <view class="stat-item" bindtap="goToLearningRecords">
+        <text class="stat-number">{{learningStats.completed || 0}}</text>
+        <text class="stat-label">已学内容</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="quick-actions">
+    <text class="section-title">快捷操作</text>
+    <view class="action-grid">
+      <view class="action-item" bindtap="goToAddMedication">
+        <image class="action-icon" src="/images/icons/medicine.png"></image>
+        <text class="action-text">添加药物</text>
+      </view>
+      <view class="action-item" bindtap="goToCheckIn">
+        <image class="action-icon" src="/images/icons/checkin.png"></image>
+        <text class="action-text">服药打卡</text>
+      </view>
+      <view class="action-item" bindtap="goToDiscomfort">
+        <image class="action-icon" src="/images/icons/discomfort.png"></image>
+        <text class="action-text">不适记录</text>
+      </view>
+      <view class="action-item" bindtap="goToAssessment">
+        <image class="action-icon" src="/images/icons/assessment.png"></image>
+        <text class="action-text">自我测评</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="today-medications">
+    <view class="section-header">
+      <text class="section-title">今日用药计划</text>
+      <text class="more-link" bindtap="goToMedicationManagement">查看全部 ></text>
+    </view>
+    
+    <view class="medication-list">
+      <view class="medication-item" wx:for="{{todayMedications}}" wx:key="id" 
+            bindtap="goToMedicationDetail" data-id="{{item.id}}">
+        <view class="medication-info">
+          <text class="medication-name">{{item.name}} {{item.dosage}}</text>
+          <text class="medication-time">{{item.time}}</text>
+        </view>
+        <view class="medication-status">
+          <block wx:if="{{item.status === 'pending'}}">
+            <button class="status-btn pending" bindtap="checkIn" 
+                    data-id="{{item.id}}" data-stop-propagation>待打卡</button>
+          </block>
+          <block wx:elif="{{item.status === 'completed'}}">
+            <text class="status-text completed">已打卡</text>
+          </block>
+          <block wx:elif="{{item.status === 'delayed'}}">
+            <text class="status-text delayed">延迟</text>
+          </block>
+          <block wx:else>
+            <text class="status-text missed">未服用</text>
+          </block>
+        </view>
+      </view>
+    </view>
+    
+    <view class="empty-state" wx:if="{{todayMedications.length === 0}}">
+      <image class="empty-icon" src="/images/icons/empty-med.png"></image>
+      <text class="empty-text">今日暂无用药计划</text>
+      <button class="btn-secondary small" bindtap="goToAddMedication">添加药物</button>
+    </view>
+  </view>
+
+  <view class="recommend-section">
+    <text class="section-title">推荐学习</text>
+    <scroll-view class="recommend-scroll" scroll-x>
+      <view class="recommend-list">
+        <view class="recommend-item" wx:for="{{recommendContents}}" wx:key="id"
+              bindtap="goToContentDetail" data-id="{{item.id}}">
+          <image class="recommend-cover" src="{{item.cover || '/images/library/default.png'}}"></image>
+          <text class="recommend-title">{{item.title}}</text>
+          <text class="recommend-desc">{{item.description}}</text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>

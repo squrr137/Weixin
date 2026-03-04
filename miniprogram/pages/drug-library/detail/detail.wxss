@@ -1,0 +1,117 @@
+/* pages/drug-library/detail/detail.wxss */
+.detail-container {
+    padding: 30rpx;
+    min-height: 100vh;
+    background-color: #FFFFFF;
+  }
+  
+  .detail-header {
+    margin-bottom: 40rpx;
+    padding-bottom: 30rpx;
+    border-bottom: 2rpx solid #F0F0F0;
+  }
+  
+  .detail-title {
+    display: block;
+    font-size: 44rpx;
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 20rpx;
+    line-height: 1.4;
+  }
+  
+  .detail-meta {
+    display: flex;
+    align-items: center;
+    font-size: 26rpx;
+    color: #999999;
+  }
+  
+  .category {
+    background-color: #E8F0FE;
+    color: #4A90E2;
+    padding: 4rpx 16rpx;
+    border-radius: 20rpx;
+    margin-right: 20rpx;
+  }
+  
+  .read-count {
+    margin-right: 20rpx;
+  }
+  
+  .detail-content {
+    font-size: 32rpx;
+    line-height: 1.8;
+    color: #333333;
+    margin-bottom: 60rpx;
+  }
+  
+  .detail-content rich-text {
+    width: 100%;
+  }
+  
+  .detail-content h3 {
+    font-size: 38rpx;
+    font-weight: 600;
+    margin: 40rpx 0 20rpx;
+    color: #4A90E2;
+  }
+  
+  .detail-content p {
+    margin: 20rpx 0;
+  }
+  
+  .detail-content li {
+    margin: 10rpx 0 10rpx 40rpx;
+    list-style-type: disc;
+  }
+  
+  .action-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin: 40rpx 0;
+    padding: 30rpx 0;
+    border-top: 2rpx solid #F0F0F0;
+    border-bottom: 2rpx solid #F0F0F0;
+  }
+  
+  .action-buttons button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200rpx;
+    margin: 0;
+    padding: 16rpx 0;
+    font-size: 28rpx;
+  }
+  
+  .btn-icon {
+    width: 32rpx;
+    height: 32rpx;
+    margin-right: 8rpx;
+  }
+  
+  .related-contents {
+    margin-top: 40rpx;
+  }
+  
+  .related-list {
+    margin-top: 20rpx;
+  }
+  
+  .related-item {
+    padding: 24rpx 0;
+    border-bottom: 2rpx solid #F5F5F5;
+  }
+  
+  .related-title {
+    display: block;
+    font-size: 30rpx;
+    color: #333333;
+    margin-bottom: 8rpx;
+  }
+  
+  .related-category {
+    font-size: 24rpx;
+    color: #999999;
+  }

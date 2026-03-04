@@ -1,0 +1,307 @@
+/* pages/profile/records/medication-records/medication-records.wxss */
+.records-container {
+    padding: 30rpx;
+    min-height: 100vh;
+    background-color: #F5F7FA;
+  }
+  
+  .header-card {
+    background: linear-gradient(135deg, #4A90E2 0%, #7B68EE 100%);
+    border-radius: 24rpx;
+    padding: 40rpx 30rpx;
+    margin-bottom: 30rpx;
+    color: #FFFFFF;
+  }
+  
+  .header-title {
+    display: block;
+    font-size: 44rpx;
+    font-weight: 600;
+    margin-bottom: 16rpx;
+  }
+  
+  .header-desc {
+    display: block;
+    font-size: 28rpx;
+    opacity: 0.9;
+  }
+  
+  .date-filter {
+    background-color: #FFFFFF;
+    border-radius: 16rpx;
+    padding: 24rpx;
+    margin-bottom: 30rpx;
+    box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+  }
+  
+  .date-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .calendar-icon {
+    width: 40rpx;
+    height: 40rpx;
+    margin-right: 16rpx;
+  }
+  
+  .date-display text {
+    font-size: 32rpx;
+    font-weight: 500;
+    color: #333333;
+    margin-right: 16rpx;
+  }
+  
+  .arrow-icon {
+    width: 24rpx;
+    height: 24rpx;
+  }
+  
+  .stats-summary {
+    display: flex;
+    background-color: #FFFFFF;
+    border-radius: 16rpx;
+    padding: 30rpx;
+    margin-bottom: 30rpx;
+    box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+  }
+  
+  .stat-item {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .stat-value {
+    display: block;
+    font-size: 48rpx;
+    font-weight: 700;
+    color: #4A90E2;
+    margin-bottom: 8rpx;
+  }
+  
+  .stat-label {
+    display: block;
+    font-size: 26rpx;
+    color: #999999;
+  }
+  
+  .records-list {
+    background-color: #FFFFFF;
+    border-radius: 16rpx;
+    padding: 20rpx;
+    margin-bottom: 30rpx;
+  }
+  
+  .record-item {
+    padding: 24rpx;
+    border-bottom: 2rpx solid #F5F5F5;
+  }
+  
+  .record-item:last-child {
+    border-bottom: none;
+  }
+  
+  .record-time {
+    margin-bottom: 12rpx;
+  }
+  
+  .time {
+    font-size: 28rpx;
+    color: #4A90E2;
+    font-weight: 500;
+  }
+  
+  .record-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8rpx;
+  }
+  
+  .medication-info {
+    flex: 1;
+  }
+  
+  .medication-name {
+    font-size: 32rpx;
+    font-weight: 500;
+    color: #333333;
+    margin-right: 16rpx;
+  }
+  
+  .medication-dosage {
+    font-size: 28rpx;
+    color: #666666;
+  }
+  
+  .status-badge {
+    display: inline-block;
+    padding: 6rpx 20rpx;
+    border-radius: 30rpx;
+    font-size: 24rpx;
+  }
+  
+  .status-badge.completed {
+    background-color: #E8F5E9;
+    color: #4CAF50;
+  }
+  
+  .status-badge.missed {
+    background-color: #FFEBEE;
+    color: #F44336;
+  }
+  
+  .status-badge.delayed {
+    background-color: #FFF3E0;
+    color: #FF9800;
+  }
+  
+  .status-badge.pending {
+    background-color: #F5F5F5;
+    color: #999999;
+  }
+  
+  .record-note {
+    margin-top: 8rpx;
+    padding: 12rpx;
+    background-color: #F8F9FA;
+    border-radius: 8rpx;
+  }
+  
+  .note-text {
+    font-size: 26rpx;
+    color: #666666;
+  }
+  
+  .calendar-view {
+    background-color: #FFFFFF;
+    border-radius: 16rpx;
+    padding: 30rpx;
+    margin-bottom: 30rpx;
+  }
+  
+  .calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30rpx;
+  }
+  
+  .calendar-title {
+    font-size: 32rpx;
+    font-weight: 600;
+    color: #333333;
+  }
+  
+  .month-selector {
+    display: flex;
+    align-items: center;
+    background-color: #F5F7FA;
+    padding: 12rpx 24rpx;
+    border-radius: 40rpx;
+  }
+  
+  .month-selector text {
+    font-size: 28rpx;
+    color: #666666;
+    margin-right: 8rpx;
+  }
+  
+  .weekday-header {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    margin-bottom: 20rpx;
+  }
+  
+  .weekday-header text {
+    font-size: 28rpx;
+    color: #999999;
+    font-weight: 500;
+  }
+  
+  .calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8rpx;
+  }
+  
+  .calendar-day {
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #F8F9FA;
+    border-radius: 12rpx;
+    position: relative;
+  }
+  
+  .day-number {
+    font-size: 28rpx;
+    color: #333333;
+  }
+  
+  .day-status {
+    position: absolute;
+    bottom: 4rpx;
+  }
+  
+  .status-dot {
+    display: block;
+    width: 8rpx;
+    height: 8rpx;
+    border-radius: 50%;
+  }
+  
+  .status-dot.good {
+    background-color: #4CAF50;
+  }
+  
+  .status-dot.medium {
+    background-color: #FF9800;
+  }
+  
+  .status-dot.poor {
+    background-color: #F44336;
+  }
+  
+  .view-toggle {
+    display: flex;
+    gap: 20rpx;
+    margin-top: 20rpx;
+  }
+  
+  .toggle-btn {
+    flex: 1;
+    background-color: #FFFFFF;
+    color: #666666;
+    border: 2rpx solid #DDDDDD;
+    border-radius: 40rpx;
+    font-size: 28rpx;
+    padding: 16rpx 0;
+  }
+  
+  .toggle-btn.active {
+    background-color: #4A90E2;
+    color: #FFFFFF;
+    border-color: #4A90E2;
+  }
+  
+  .empty-state {
+    text-align: center;
+    padding: 80rpx 0;
+  }
+  
+  .empty-icon {
+    width: 160rpx;
+    height: 160rpx;
+    margin-bottom: 30rpx;
+    opacity: 0.5;
+  }
+  
+  .empty-text {
+    font-size: 28rpx;
+    color: #999999;
+  }

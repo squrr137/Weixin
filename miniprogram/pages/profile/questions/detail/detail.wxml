@@ -1,0 +1,36 @@
+<!-- pages/profile/questions/detail/detail.wxml -->
+<view class="detail-container">
+  <view class="question-card">
+    <view class="question-header">
+      <text class="question-title">{{question.title}}</text>
+      <text class="question-status {{question.status}}">
+        {{question.status === 'pending' ? '待回复' : 
+          question.status === 'replied' ? '已回复' : '已关闭'}}
+      </text>
+    </view>
+    <text class="question-content">{{question.content}}</text>
+    <view class="question-meta">
+      <text class="question-time">{{question.createTime}}</text>
+    </view>
+  </view>
+
+  <view class="reply-card" wx:if="{{question.reply}}">
+    <view class="reply-header">
+      <image class="reply-avatar" src="/images/icons/admin-avatar.png"></image>
+      <view class="reply-info">
+        <text class="reply-name">官方回复</text>
+        <text class="reply-time">{{question.replyTime}}</text>
+      </view>
+    </view>
+    <text class="reply-content">{{question.reply}}</text>
+  </view>
+
+  <view class="no-reply" wx:else>
+    <image class="no-reply-icon" src="/images/icons/no-reply.png"></image>
+    <text class="no-reply-text">暂无回复，请耐心等待</text>
+  </view>
+
+  <view class="action-buttons" wx:if="{{question.status === 'pending'}}">
+    <button class="btn-secondary" bindtap="closeQuestion">关闭问题</button>
+  </view>
+</view>

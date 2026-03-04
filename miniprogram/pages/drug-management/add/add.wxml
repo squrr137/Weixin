@@ -1,0 +1,120 @@
+<!-- pages/drug-management/add/add.wxml -->
+<view class="add-container">
+  <form bindsubmit="handleSubmit">
+    <view class="card">
+      <text class="section-title">基本信息</text>
+      
+      <view class="form-item">
+        <text class="form-label">药物名称 <text class="required">*</text></text>
+        <input class="form-input" placeholder="请输入药物名称" 
+               name="name" bindinput="onInput" data-field="name" />
+      </view>
+
+      <view class="form-item">
+        <text class="form-label">剂量 <text class="required">*</text></text>
+        <input class="form-input" placeholder="如：50mg" 
+               name="dosage" bindinput="onInput" data-field="dosage" />
+      </view>
+
+      <view class="form-item">
+        <text class="form-label">剂型</text>
+        <picker mode="selector" range="{{dosageForms}}" bindchange="onDosageFormChange">
+          <view class="picker-field">
+            {{formData.dosageForm || '请选择剂型'}}
+          </view>
+        </picker>
+      </view>
+
+      <view class="form-item">
+        <text class="form-label">备注</text>
+        <textarea class="form-textarea" placeholder="请输入备注信息" 
+                  name="note" bindinput="onInput" data-field="note" />
+      </view>
+    </view>
+
+    <view class="card">
+      <text class="section-title">用药时间</text>
+      
+      <view class="schedule-list">
+        <view class="schedule-item" wx:for="{{schedule}}" wx:key="index">
+          <view class="schedule-time">
+            <picker mode="time" value="{{item.time}}" bindchange="onTimeChange" data-index="{{index}}">
+              <view class="time-picker">
+                <text>{{item.time || '选择时间'}}</text>
+              </view>
+            </picker>
+          </view>
+          
+          <view class="schedule-dose">
+            <input class="dose-input" placeholder="剂量" 
+                   value="{{item.dose}}" bindinput="onScheduleDoseInput" data-index="{{index}}" />
+          </view>
+          
+          <view class="schedule-actions">
+            <text class="action-delete" wx:if="{{schedule.length > 1}}" 
+                  bindtap="removeSchedule" data-index="{{index}}">删除</text>
+          </view>
+        </view>
+      </view>
+
+      <button class="btn-secondary small" bindtap="addSchedule">+ 添加服药时间</button>
+    </view>
+
+    <view class="card">
+      <text class="section-title">用药周期</text>
+      
+      <view class="form-item">
+        <text class="form-label">开始日期</text>
+        <picker mode="date" value="{{formData.startDate}}" bindchange="onStartDateChange">
+          <view class="picker-field">
+            {{formData.startDate || '请选择开始日期'}}
+          </view>
+        </picker>
+      </view>
+
+      <view class="form-item">
+        <text class="form-label">结束日期</text>
+        <picker mode="date" value="{{formData.endDate}}" bindchange="onEndDateChange">
+          <view class="picker-field">
+            {{formData.endDate || '请选择结束日期'}}
+          </view>
+        </picker>
+      </view>
+
+      <view class="form-item">
+        <text class="form-label">重复方式</text>
+        <radio-group class="repeat-group" bindchange="onRepeatChange">
+          <label class="radio-label">
+            <radio value="每天" color="#4A90E2" checked="{{formData.repeat === '每天'}}" /> 每天
+          </label>
+          <label class="radio-label">
+            <radio value="每周" color="#4A90E2" checked="{{formData.repeat === '每周'}}" /> 每周
+          </label>
+          <label class="radio-label">
+            <radio value="不重复" color="#4A90E2" checked="{{formData.repeat === '不重复'}}" /> 不重复
+          </label>
+        </radio-group>
+      </view>
+
+      <view class="weekday-select" wx:if="{{formData.repeat === '每周'}}">
+        <text class="form-label">选择星期</text>
+        <view class="weekday-grid">
+          <view class="weekday-item" wx:for="{{weekdays}}" wx:key="index">
+            <checkbox-group bindchange="onWeekdayChange" data-day="{{item.value}}">
+              <checkbox value="{{item.value}}" color="#4A90E2">
+                <text>{{item.label}}</text>
+              </checkbox>
+            </checkbox-group>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="form-footer">
+      <button class="btn-primary" form-type="submit" 
+              disabled="{{!canSubmit}}" loading="{{submitting}}">
+        保存药物
+      </button>
+    </view>
+  </form>
+</view>
